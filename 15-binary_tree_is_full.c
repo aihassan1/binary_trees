@@ -7,22 +7,30 @@
  */
 int binary_tree_is_full(const binary_tree_t *tree)
 {
+	int left_path, right_path;
 	/* An empty tree is considered full */
 	if (tree == NULL)
 	{
 		return (0);
 	}
 
-	/* Check if the current node has either 0 or 2 children */
-	if ((tree->left && tree->right) || (!tree->left && !tree->right))
-	{
-		/* Recursively check for both left and right subtrees */
-		return (binary_tree_is_full(tree->left) && binary_tree_is_full(tree->right));
-	}
-
 	else
 	{
-		/* If the current node has 1 child, the tree is not full */
-		return (0);
+		if (tree->left && tree->right)
+		{
+			left_path = binary_tree_is_full(tree->left);
+			right_path = binary_tree_is_full(tree->right);
+
+			if (left_path == 0 || right_path == 0)
+			{
+				return (0);
+			}
+			return (1);
+		}
+		else if (!tree->left && !tree->right)
+		{
+			return (1);
+		}
 	}
+	return (0);
 }
