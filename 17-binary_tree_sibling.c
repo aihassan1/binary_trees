@@ -14,7 +14,7 @@ binary_tree_t *binary_tree_sibling(binary_tree_t *node)
 	/* Check for NULL node or if the node has no parent */
 	if (node == NULL || node->parent == NULL)
 	{
-		return (NULL);
+		return (NULL);16-binary_tree_is_perfect.c
 	}
 
 	/* Set temp to the parent of the given node */
